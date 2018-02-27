@@ -9,18 +9,29 @@
 </head>
 <body>
 <table>
-	<th>Apellidos</th>
-	<th>Nombre</th>
-	<th>email</th>
-	<th>Telefono</th>
-	<th>Codigo Postal</th>
+	<tr>
+		<th>Apellidos</th>
 	
+		<th>Nombre</th>
+	
+		<th>email</th>
+	
+		<th>Telefono</th>
+		
+		<th>Codigo Postal</th>
+	</tr>
 	<c:forEach items="${usuarios}" var="user" varStatus="estado">
-		<td><c:out value="${user.apellidos}"/></td>
-		<td><c:out value="${user.nombre}"/></td>
-		<td><c:out value="${user.email}"/></td>
-		<td><c:out value="${user.telefono}"/></td>
-		<td><c:out value="${user.cp}"/></td>
+		<tr>
+			<td><c:out value="${user.apellidos}"/></td>
+
+			<td><c:out value="${user.nombre}"/></td>
+
+			<td><c:out value="${user.email}"/></td>
+
+			<td><c:out value="${user.telefono}"/></td>
+
+			<td><c:out value="${user.cp}"/></td>
+		</tr>
 	</c:forEach>
 </table>
 

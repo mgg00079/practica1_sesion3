@@ -24,6 +24,7 @@ public class Usuario implements Serializable {
 		this.email=email;
 		this.telefono=telefono;
 		this.email=email;
+		this.cp=cp;
 	}
 	
 	public String getNombre() {

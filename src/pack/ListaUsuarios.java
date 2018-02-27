@@ -20,21 +20,31 @@ public class ListaUsuarios extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		doPost(request, response);
+	}
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		String login = request.getParameter("name");
+		String password = request.getParameter("pass");
+		
 		ArrayList<Usuario> usuarios = new ArrayList<Usuario> ();
 		Usuario user1 = new Usuario ("Manuel","Casquel Orzaes", "maco0007@ujaen.es", "123456789", "23005");
 		Usuario user2 = new Usuario ("Marta","Gonzalez Gonzalez","mgg00079@ujaen.es", "789456123", "23006");
 		usuarios.add(user1);
 		usuarios.add(user2);
 		request.setAttribute("usuarios", usuarios);
-		String url="/listausuarios.jsp";
-		getServletContext().getRequestDispatcher(url).forward(request, response);
-	
-	}
-
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		if (login.equals("servicios") && password.equals("servicios")) {
+			String url="/listausuarios.jsp";
+			getServletContext().getRequestDispatcher(url).forward(request, response);
+		}
+		else {
+			String url="/registro.html";
+			getServletContext().getRequestDispatcher(url).forward(request, response);
+		}
+		
 	}
 
 }
