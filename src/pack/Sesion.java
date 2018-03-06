@@ -48,7 +48,7 @@ public class Sesion extends HttpServlet {
 			String email = user.getEmail();
 			String telefono = user.getTelefono();
 			String codigo = user.getCp();
-			Usuario usuarioreg = new Usuario();
+			Usuario usuarioreg = new Usuario(nombre, apellido, email, telefono, codigo);
 			session.setAttribute("usuario", usuarioreg);
 			url = "/registro.jsp";
 			getServletContext().getRequestDispatcher(url).forward(request, response);
