@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
+
 
 /**
  * Servlet implementation class ListaUsuarios
@@ -41,7 +41,7 @@ public class ListaUsuarios extends HttpServlet {
 			getServletContext().getRequestDispatcher(url).forward(request, response);
 		}
 		else {
-			String url="/registro.html";
+			String url="/Sesion";
 			getServletContext().getRequestDispatcher(url).forward(request, response);
 		}
 		

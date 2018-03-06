@@ -4,37 +4,44 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Lista de usuarios:</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<style>
+	table th, td{
+		text-align: center;
+	}
+	</style>
+	<title>Lista de usuarios:</title>
 </head>
 <body>
-<table>
-	<tr>
-		<th>Apellidos</th>
-	
-		<th>Nombre</th>
-	
-		<th>email</th>
-	
-		<th>Telefono</th>
-		
-		<th>Codigo Postal</th>
-	</tr>
-	<c:forEach items="${usuarios}" var="user" varStatus="estado">
+	<h1>Usuarios registrados</h1>
+	<table border="1">
 		<tr>
-			<td><c:out value="${user.apellidos}"/></td>
-
-			<td><c:out value="${user.nombre}"/></td>
-
-			<td><c:out value="${user.email}"/></td>
-
-			<td><c:out value="${user.telefono}"/></td>
-
-			<td><c:out value="${user.cp}"/></td>
+			<th>Apellidos</th>
+		
+			<th>Nombre</th>
+		
+			<th>email</th>
+		
+			<th>Telefono</th>
+			
+			<th>Codigo Postal</th>
 		</tr>
-	</c:forEach>
-</table>
-
+		<c:forEach items="${usuarios}" var="user" varStatus="estado">
+			<tr>
+				<td><c:out value="${user.apellidos}"/></td>
+	
+				<td><c:out value="${user.nombre}"/></td>
+	
+				<td><c:out value="${user.email}"/></td>
+	
+				<td><c:out value="${user.telefono}"/></td>
+	
+				<td><c:out value="${user.cp}"/></td>
+			</tr>
+		</c:forEach>
+	</table>
+	<br/>
+	<a href="index.html">Desconectar</a>
 </body>
 </html>
 
