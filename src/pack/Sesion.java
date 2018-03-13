@@ -19,45 +19,51 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/Sesion")
 public class Sesion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	
+	private String nom = null;
+	private String ape = null;
+	private String ema = null;
+	private String tel = null;
+	private String cod = null;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		
 		HttpSession session = request.getSession(true); //En caso de que no exista la sesion, la crea.
 		session.setMaxInactiveInterval(60); //El valor es en segundos.
 		response.setContentType("text/html");
 		
 		
-		String nom=request.getParameter("nombre");
-		String ape=request.getParameter("apellidos");
-		String ema=request.getParameter("useremail");
-		String tel=request.getParameter("telefono");
-		String cod=request.getParameter("codpost");
-		Usuario user = new Usuario(nom, ape, ema, tel, cod);
+		nom=request.getParameter("nombre");
+		ape=request.getParameter("apellidos");
+		ema=request.getParameter("useremail");
+		tel=request.getParameter("telefono");
+		cod=request.getParameter("codpost");
 		
 		Usuario usuario = (Usuario)session.getAttribute("usuario");
 		String url ="";
 		
 		if (usuario == null) {
-			url = "/registro.html";
-			getServletContext().getRequestDispatcher(url).forward(request, response);
+			if(nom == null && ape == null && ema == null && tel == null && cod == null) {
+				url = "/registro.html";
+				getServletContext().getRequestDispatcher(url).forward(request, response);
+			}
+			else {
+				
+				Usuario user = new Usuario(nom, ape, ema, tel, cod);
+				request.setAttribute("usuario", user);
+				session.setAttribute("usuario", user);
+				url = "/registro.jsp";
+				getServletContext().getRequestDispatcher(url).forward(request, response);
+			}
 		}
 		else {
-			String nombre = user.getNombre();
-			String apellido = user.getApellidos();
-			String email = user.getEmail();
-			String telefono = user.getTelefono();
-			String codigo = user.getCp();
-			Usuario usuarioreg = new Usuario(nombre, apellido, email, telefono, codigo);
-			session.setAttribute("usuario", usuarioreg);
 			url = "/registro.jsp";
 			getServletContext().getRequestDispatcher(url).forward(request, response);
-		}		
+		}
 	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
 }

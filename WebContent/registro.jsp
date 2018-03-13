@@ -24,15 +24,14 @@
 			<th>Codigo Postal</th>
 		</tr>
 		
-		<c:forEach items="${usuarios}" var="user" varStatus="estado">
-			<tr>
-				<td><c:out value="${user.nombre}"/></td>
-				<td><c:out value="${user.apellidos}"/></td>
-				<td><c:out value="${user.email}"/></td>
-				<td><c:out value="${user.telefono}"/></td>
-				<td><c:out value="${user.cp}"/></td>
-			</tr>
-		</c:forEach>
+		<tr>
+			<td><c:out value="${usuario.nombre}"/></td>
+			<td><c:out value="${usuario.apellidos}"/></td>
+			<td><c:out value="${usuario.email}"/></td>
+			<td><c:out value="${usuario.telefono}"/></td>
+			<td><c:out value="${usuario.cp}"/></td>
+		</tr>
+		
 	</table>
 	<a href="index.html">Desconectar</a>
 </body>
